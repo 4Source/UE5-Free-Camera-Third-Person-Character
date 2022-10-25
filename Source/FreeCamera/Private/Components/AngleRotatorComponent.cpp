@@ -22,8 +22,6 @@ void UAngleRotatorComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-
 	// Check Valid Settings
 	if (RotationAxis == ERotationAxis::NONE)
 	{
@@ -51,6 +49,7 @@ void UAngleRotatorComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UAngleRotatorComponent::AddInput(float Value)
 {
+	// Add Rotation on the Selected Axes
 	switch (RotationAxis)
 	{
 	case ERotationAxis::AXIS_ROLL:
@@ -63,7 +62,6 @@ void UAngleRotatorComponent::AddInput(float Value)
 		RotationInput.Yaw += InputScale * Value;
 		break;
 	default:
-		UE_LOG(AngleRotator, Warning, TEXT("Could not add rotation input! Invalid axis selected."));
 		break;
 	}
 }
